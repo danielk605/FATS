@@ -113,7 +113,9 @@ def fasper(x,y,ofac,hifac, MACC=4):
     print 'Incompatible arrays.'  
     return  
   
-  nout  = 0.5*ofac*hifac*n  
+  if math.floor(nout) != nout:
+    print("Warning: nout is not an integer and will be rounded down.")
+  nout  = int(0.5*ofac*hifac*n)
   nfreqt = long(ofac*hifac*n*MACC)   #Size the FFT as next power  
   nfreq = 64L             # of 2 above nfreqt.  
   
