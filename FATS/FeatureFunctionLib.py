@@ -199,8 +199,12 @@ class SlottedA_length(Base):
                 SAC2 = SAC[slots]
                 k = next((index for index, value in
                          enumerate(SAC2) if value < np.exp(-1)), None)
-
-        return slots[k] * self.T
+        
+        return_val = slots[k] * self.T
+        if np.size(return_val) == 0:
+            return_val = np.nan
+        
+        return return_val
 
     def getAtt(self):
         # return SlottedA_length.SAC, SlottedA_length.slots
